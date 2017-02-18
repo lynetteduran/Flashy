@@ -1,0 +1,27 @@
+{
+  "name": "flashy",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Lynette Duran"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "custom",
+    "flash",
+    "cards"
+  ],
+  "homepage": "https://github.com/lynetteduran/flashy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.2",
+    "angular": "^1.6.2",
+    "bootstrap": "^3.3.7"
+  }
+}
