@@ -29,6 +29,7 @@ app.get('/', function homepage (req, res) {
 app.get('/api', controllers.api.index);
 //user API Endpoints
 app.get('/api/users', controllers.users.index);
+app.get('/api/users/:userId', controllers.users.show);
 
 
 /*************
