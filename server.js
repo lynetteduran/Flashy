@@ -25,12 +25,12 @@ app.get('/', function homepage (req, res) {
 });
 
 //API ENDPOINTS VIA CONTROLLERS
-//get API index
+//GET API index
 app.get('/api', controllers.api.index);
 //user API Endpoints
 app.get('/api/users', controllers.users.index);
 app.get('/api/users/:userId', controllers.users.show);
-
+app.post('/api/users', controllers.users.create);
 
 /*************
 *START SERVER*
