@@ -16,8 +16,18 @@ function show(req, res) {
   });
 }
 
+//POST A USER('/api/users')
+function create(req, res) {
+  console.log('body', req.body);
+  db.User.create(req.body, function(err, newUser) {
+    console.log('just created: ' + newUser.userName);
+    res.json(newUser);
+  });
+}
+
 //EXPORTS PUBLIC METHODS
 module.exports = {
   index: index,
   show: show,
+  create: create,
 }
