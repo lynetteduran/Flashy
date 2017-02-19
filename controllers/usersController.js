@@ -25,7 +25,7 @@ function create(req, res) {
   });
 }
 
-//UPDATE A USER @ ('/api/users')
+//UPDATE A USER @ ('/api/users/:userId')
 function update(req, res) {
   console.log('updating user with data: ' + req.body);
   db.User.findById(req.params.userId, function(err, foundUser) {
@@ -39,10 +39,23 @@ function update(req, res) {
     });
   });
 }
+
+//DELETE A USER @ ('/api/users/:userId')
+function destroy(req, res) {
+  console.log('deleting user: ', req.params);
+  var userId = req.params.id;
+  db.User.findOneAndRemove({_id: bookId}, function(err, deletedUser) {
+    if (err) {console.log('error deleting user: ' + deletedUser.userName)};
+    console.log(deletedUser.userName + ' deleted successfully');
+    res.json(deletedUser);
+  });
+}
+
 //EXPORTS PUBLIC METHODS
 module.exports = {
   index: index,
   show: show,
   create: create,
   update: update,
-}
+  destroy: destroy,
+};
