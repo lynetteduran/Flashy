@@ -2,12 +2,14 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('./user');
 
-var deckSchema = new Schema({
+var DeckSchema = new Schema({
+  _creator : [{type: Number, ref: 'Person'}],
   deckName: String,
   subject: String,
 });
 
 //EXPORTS DECK MODEL
-var Deck = mongoose.model('Deck', deckSchema);
+var Deck = mongoose.model('Deck', DeckSchema);
 module.exports = Deck;
