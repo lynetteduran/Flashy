@@ -24,15 +24,20 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-//API ENDPOINTS VIA CONTROLLERS
+//API ENDPOINTS VIA CONTROLLERS//
+
 //GET API index
 app.get('/api', controllers.api.index);
-//user API Endpoints
+
+//USER MODEL API Endpoints
 app.get('/api/users', controllers.users.index);
 app.get('/api/users/:userId', controllers.users.show);
 app.post('/api/users', controllers.users.create);
 app.put('/api/users/:userId', controllers.users.update);
 app.delete('/api/users/:userId', controllers.users.destroy);
+
+//DECK MODEL API ENDPOINTS
+app.get('/api/decks', controllers.decks.index);
 
 /*************
 *START SERVER*
