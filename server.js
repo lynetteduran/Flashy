@@ -19,17 +19,27 @@ app.use('/vendor', express.static(__dirname + '/bower_components'));
 *ROUTES*
 *******/
 
-//HTML Endpoints
+/*
+ * HTML ENDPOINTS
+ */
+
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-//API ENDPOINTS VIA CONTROLLERS//
+app.get('/templates/:name', function templates(req, res){
+  var name = req.params.name;
+  res.sendFile(__dirname + '/views/templates/' + name + '.html');
+});
 
-//GET API index
+/*
+ * JSON API ENDPOINTS
+ */
+
+//GET API INDEX
 app.get('/api', controllers.api.index);
 
-//USER MODEL API Endpoints
+//USER MODEL API ENPOINTS
 app.get('/api/users', controllers.users.index);
 app.get('/api/users/:userId', controllers.users.show);
 app.post('/api/users', controllers.users.create);
@@ -38,6 +48,13 @@ app.delete('/api/users/:userId', controllers.users.destroy);
 
 //DECK MODEL API ENDPOINTS
 app.get('/api/decks', controllers.decks.index);
+app.get('/api/decks/:deckId', controllers.decks.show);
+
+//ALL OTHER ROUTES (ANGULAR HANDLES)
+//redirects all other paths to index
+app.get('*', function (req, res) {
+  res.send(__dirname + '/views/index.html');
+});
 
 /*************
 *START SERVER*

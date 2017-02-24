@@ -4,62 +4,74 @@ var sampleUsers = [
   {
     userName: 'Sherri',
     email: 'sherri@user.com',
-    password: 'Sherri'
+    password: 'Sherri',
+    deck: 'Geometry'
   },
   {
     userName: 'Chris',
     email: 'chris@user.com',
-    password: 'Chris'
+    password: 'Chris',
+    deck: 'Fractions'
   },
   {
     userName: 'Teddy',
     email: 'teddy@user.com',
-    password: 'Teddy'
+    password: 'Teddy',
+    deck: 'Impressionism'
   },
   {
     userName: 'Kenny',
     email: 'kenny@user.com',
-    password: 'Kenny'
+    password: 'Kenny',
+    deck: 'Nouns'
   },
   {
     userName: 'Bill',
     email: 'bill@user.com',
-    password: 'Bill'
+    password: 'Bill',
+    deck: 'JavaScript'
   },
   {
     userName: 'Natalia',
     email: 'natalia@user.com',
-    password: 'Natalia'
+    password: 'Natalia',
+    deck: 'Cells'
   },
   {
     userName: 'Lily',
     email: 'lily@user.com',
-    password: 'Lily'
+    password: 'Lily',
+    deck: 'Electrons'
   },
   {
     userName: 'Brandon',
     email: 'brandon@user.com',
-    password: 'Brandon'
+    password: 'Brandon',
+    deck: 'Gravity'
   },
   {
     userName: 'Toby',
     email: 'toby@user.com',
-    password: 'Toby'
+    password: 'Toby',
+    deck: 'Parabolas'
   },
   {
     userName: 'Ryan',
     email: 'ryan@user.com',
-    password: 'Ryan'
+    password: 'Ryan',
+    deck: 'Angles'
   },
   {
     userName: 'Alivia',
     email: 'alivia@user.com',
-    password: 'Alivia'
+    password: 'Alivia',
+    deck: 'DNA'
   },
   {
     userName: 'Lynette',
     email: 'lynette@user.com',
-    password: 'Lynette'
+    password: 'Lynette',
+    deck: 'Streches'
   }
 ];
 
@@ -115,10 +127,11 @@ var sampleDecks = [
 ];
 
 db.Deck.remove({}, function(err, decks){
-  console.log('removes all decks');
+  console.log('removed all decks');
   db.Deck.create(sampleDecks, function(err, decks){
-    if (err){console.log(err);
-    return;
+    if (err){
+      console.log(err);
+      return;
     }
     console.log('recreated all decks');
     console.log('created', decks.length, "decks");
@@ -128,11 +141,12 @@ db.Deck.remove({}, function(err, decks){
       sampleUsers.forEach(function(userData){
         var user = new db.User({
           userName: userData.userName,
-          email: userData.userData,
-          password: userData.password,
+          email: userData.email,
+          password: userData.password
         });
-        db.Deck.findOne({name: userData.deck}, function(err, foundDeck){
-          console.log('found deck' + foundDeck.deckName + ' for user ' + user.userName);
+        console.log(userData.deck);
+        db.Deck.findOne({deckName: userData.deck}, function(err, foundDeck){
+          console.log('found deck "' + foundDeck.deckName + '" for user ' + user.userName);
           if (err){
             console.log(err);
             return;
@@ -142,7 +156,7 @@ db.Deck.remove({}, function(err, decks){
             if (err){
               return console.log(err);
             }
-            console.log('saved' + savedUser.userName + "'s deck by name of " + foundDeck.deckName);
+            console.log('saved ' + savedUser.userName + "'s deck by name of " + foundDeck.deckName);
           });
         });
       });

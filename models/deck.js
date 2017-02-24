@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var User = require('./user');
 
 var DeckSchema = new Schema({
-  _creator : [{type: Number, ref: 'Person'}],
+  _creator : [{type: Number, ref: 'User'}],
   deckName: String,
   subject: String,
 });
