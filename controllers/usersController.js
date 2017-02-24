@@ -30,7 +30,7 @@ function create(req, res){
     email: req.body.email,
     password: req.body.password,
   });
-  db.Deck.findOne({name: req.body.deck}, function(err, deck){
+  db.Deck.findOne({deckName: req.body.deckName}, function(err, deck){
     if (err){
       return console.log(err);
     }
@@ -49,7 +49,7 @@ function create(req, res){
 function update(req, res) {
   console.log('updating user with data: ' + req.body);
   db.User.findById(req.params.userId, function(err, foundUser) {
-    if(err) {console.log("Error updating user", err);}
+    if (err) {console.log("Error updating user", err);}
     foundUser.userName = req.body.userName;
     foundUser.email = req.body.email;
     foundUser.password = req.body.password;
@@ -62,11 +62,8 @@ function update(req, res) {
 
 //DELETE A USER @ ('/api/users/:userId')
 function destroy(req, res) {
-  console.log('deleting user: ', req.params);
-  var userId = req.params.id;
-  db.User.findOneAndRemove({_id: bookId}, function(err, deletedUser) {
-    if (err) {console.log('error deleting user: ' + deletedUser.userName)};
-    console.log(deletedUser.userName + ' deleted successfully');
+  db.User.findOneAndRemove({_id: req.params.userId}, function(err, deletedUser){
+    console.log('deleted: ', deletedUser);
     res.json(deletedUser);
   });
 }
