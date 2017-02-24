@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var Deck = require('./deck');
 
 var UserSchema = new Schema({
-  name: String,
+  userName: String,
   email: String,
   password: String,
   deck: {
