@@ -2,16 +2,11 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Deck = require('./deck');
 
 var UserSchema = new Schema({
   userName: String,
   email: String,
   password: String,
-  deck: {
-    type: Schema.Types.ObjectId,
-    ref: 'Deck'
-  },
   userSince: {type: Date, default: Date.now},
 });
 

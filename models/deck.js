@@ -5,9 +5,10 @@ var Schema = mongoose.Schema;
 var User = require('./user');
 
 var DeckSchema = new Schema({
-  _creator : [{type: Number, ref: 'User'}],
+  user_id: {type: Number, ref: 'User'},
   deckName: String,
   subject: String,
+  deckCreated: {type: Date, default: Date.now},
 });
 
 //EXPORTS DECK MODEL
