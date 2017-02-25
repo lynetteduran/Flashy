@@ -4,74 +4,62 @@ var sampleUsers = [
   {
     userName: 'Sherri',
     email: 'sherri@user.com',
-    password: 'Sherri',
-    deck: 'Geometry'
+    password: 'Sherri'
   },
   {
     userName: 'Chris',
     email: 'chris@user.com',
-    password: 'Chris',
-    deck: 'Fractions'
+    password: 'Chris'
   },
   {
     userName: 'Teddy',
     email: 'teddy@user.com',
-    password: 'Teddy',
-    deck: 'Impressionism'
+    password: 'Teddy'
   },
   {
     userName: 'Kenny',
     email: 'kenny@user.com',
-    password: 'Kenny',
-    deck: 'Nouns'
+    password: 'Kenny'
   },
   {
     userName: 'Bill',
     email: 'bill@user.com',
-    password: 'Bill',
-    deck: 'JavaScript'
+    password: 'Bill'
   },
   {
     userName: 'Natalia',
     email: 'natalia@user.com',
-    password: 'Natalia',
-    deck: 'Cells'
+    password: 'Natalia'
   },
   {
     userName: 'Lily',
     email: 'lily@user.com',
-    password: 'Lily',
-    deck: 'Electrons'
+    password: 'Lily'
   },
   {
     userName: 'Brandon',
     email: 'brandon@user.com',
-    password: 'Brandon',
-    deck: 'Gravity'
+    password: 'Brandon'
   },
   {
     userName: 'Toby',
     email: 'toby@user.com',
-    password: 'Toby',
-    deck: 'Parabolas'
+    password: 'Toby'
   },
   {
     userName: 'Ryan',
     email: 'ryan@user.com',
-    password: 'Ryan',
-    deck: 'Angles'
+    password: 'Ryan'
   },
   {
     userName: 'Alivia',
     email: 'alivia@user.com',
-    password: 'Alivia',
-    deck: 'DNA'
+    password: 'Alivia'
   },
   {
     userName: 'Lynette',
     email: 'lynette@user.com',
-    password: 'Lynette',
-    deck: 'Streches'
+    password: 'Lynette'
   }
 ];
 
@@ -126,40 +114,41 @@ var sampleDecks = [
   },
 ];
 
-db.Deck.remove({}, function(err, decks){
-  console.log('removed all decks');
-  db.Deck.create(sampleDecks, function(err, decks){
-    if (err){
-      console.log(err);
-      return;
-    }
-    console.log('recreated all decks');
-    console.log('created', decks.length, "decks");
 
-    db.User.remove({}, function(err, users){
-      console.log('removed all users');
-      sampleUsers.forEach(function(userData){
-        var user = new db.User({
-          userName: userData.userName,
-          email: userData.email,
-          password: userData.password
-        });
-        console.log(userData.deck);
-        db.Deck.findOne({deckName: userData.deck}, function(err, foundDeck){
-          console.log('found deck "' + foundDeck.deckName + '" for user ' + user.userName);
-          if (err){
-            console.log(err);
-            return;
-          }
-          user.deck = foundDeck;
-          user.save(function(err, savedUser){
-            if (err){
-              return console.log(err);
-            }
-            console.log('saved ' + savedUser.userName + "'s deck by name of " + foundDeck.deckName);
-          });
-        });
-      });
-    });
-  });
-});
+// db.Deck.remove({}, function(err, decks){
+//   console.log('removed all decks');
+//   db.Deck.create(sampleDecks, function(err, decks){
+//     if (err){
+//       console.log(err);
+//       return;
+//     }
+//     console.log('recreated all decks');
+//     console.log('created', decks.length, "decks");
+//
+//     db.User.remove({}, function(err, users){
+//       console.log('removed all users');
+//       sampleUsers.forEach(function(userData){
+//         var user = new db.User({
+//           userName: userData.userName,
+//           email: userData.email,
+//           password: userData.password
+//         });
+//         console.log(userData.deck);
+//         db.Deck.findOne({deckName: userData.deck}, function(err, foundDeck){
+//           console.log('found deck "' + foundDeck.deckName + '" for user ' + user.userName);
+//           if (err){
+//             console.log(err);
+//             return;
+//           }
+//           user.deck = foundDeck;
+//           user.save(function(err, savedUser){
+//             if (err){
+//               return console.log(err);
+//             }
+//             console.log('saved ' + savedUser.userName + "'s deck by name of " + foundDeck.deckName);
+//           });
+//         });
+//       });
+//     });
+//   });
+// });
