@@ -53,7 +53,7 @@ app.get('/api/decks/:deckId', controllers.decks.show);
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
 app.get('*', function (req, res) {
-  res.send(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 /*************
@@ -63,5 +63,5 @@ app.get('*', function (req, res) {
 //LISTEN ON PORT 3000
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-  console.log('I can hear you breathe...on port:' + port);
+  console.log('Looking hella cute, dawg...on port:' + port);
 });
