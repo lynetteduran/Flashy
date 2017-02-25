@@ -18,33 +18,11 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
-    <script src="/controllers/usersIndexController.js"></script>
+    <script src="/scripts/controllers/UsersIndexController.js"></script>
+    <script src="/scripts/controllers/UsersShowController.js"></script>
   </head>
 
   <body>
-    <h2>Sign-Up!</h2>
-    <div ng-controller="UsersIndexController as usersIndexCtrl">
-      <form ng-submit="usersIndexCtrl.createUser()">
-        <input type="text" placeholder="name" ng-model="usersIndexCtrl.newUser.userName">
-        <input type="text" placeholder="email" ng-model="usersIndexCtrl.newUser.email">
-        <p><b>usersIndexCtrl.newUser:</b> {{usersIndexCtrl.newUser.userName}}</p>
-        <button type="submit">Submit</button>
-      </form>
-
-      <h2>All Users</h2>
-      <input type="text" ng-model="searchText" placeholder="Search Users">
-      <div ng-repeat="user in usersIndexCtrl.users | orderBy: 'userName' | filter: searchText">
-        <ul>
-          <li style="list-style-type:none;">
-            <div ng-hide="editing">{{user.userName}}
-            </div>
-            <input ng-show="editing" ng-model="user.userName" type="text">
-            <button ng-click="usersIndexCtrl.deleteUser(user)">Delete</button>
-            <button ng-hide="editing" ng-click="editing = true" >Edit</button>
-            <button ng-show="editing" ng-click="usersIndexCtrl.editUser(user); editing = false">Save Changes</button>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <div ng-view></div>
   </body>
 </html>
