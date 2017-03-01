@@ -54,7 +54,7 @@ app.put('/api/decks/:deckId', controllers.decks.update);
 app.delete('/api/decks/:deckId', controllers.decks.destroy);
 
 //CARD MODEL API ENDPOINTS
-// app.get('/api/decks/:deckId/cards', controllers.decks.index);
+app.get('/api/decks/:deckId/cards', controllers.cards.index);
 
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
