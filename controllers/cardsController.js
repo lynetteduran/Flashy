@@ -43,8 +43,19 @@ function update(req, res){
   });
 }
 
+//DELETE A CARD
+function destroy(req, res){
+  db.Deck.findById(req.params.deckId, function(err, foundDeck){
+    var cardToRemove = foundDeck.cards.id(req.params.cardId);
+    cardToRemove.remove();
+    foundDeck.save();
+    res.json(foundDeck);
+  });
+}
+
 module.exports = {
   index: index,
   create: create,
-  update: update
+  update: update,
+  destroy: destroy
 }
