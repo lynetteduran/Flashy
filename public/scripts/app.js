@@ -10,17 +10,17 @@ function config($routeProvider, $locationProvider){
   $routeProvider
 
   .when('/', {
-    templateUrl: '/templates/flashy-home',
+    templateUrl: '/templates/home/flashy-home',
     controllerAs: 'usersIndexCtrl',
     controller: 'UsersIndexController'
   })
   .when('/signup', {
-    templateUrl: '/templates/signup',
+    templateUrl: '/templates/home/signup',
     controllerAs: 'usersIndexCtrl',
     controller: 'UsersIndexController'
   })
   .when('/login', {
-    templateUrl: '/templates/login',
+    templateUrl: '/templates/home/login',
     controllerAs: 'usersIndexCtrl',
     controller: 'UsersIndexController'
   })
