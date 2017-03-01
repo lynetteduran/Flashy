@@ -22,8 +22,19 @@ function show(req, res){
   });
 }
 
+//CREATE A DECK ('/api/decks')
+function create(req, res){
+  console.log('body', req.body);
+  db.Deck.create(req.body, function(err, deck){
+    if(err){console.log(err);}
+    console.log(deck);
+    res.json(deck);
+  });
+}
+
 //EXPORTS PUBLIC METHODS
 module.exports = {
   index: index,
-  show: show
+  show: show,
+  create: create
 }
