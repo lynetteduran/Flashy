@@ -10,9 +10,9 @@ var deckSchema = new Schema({
   deckName: String,
   subject: String,
   cards: [Card.schema],
-  deckCreated: {type: Date, default: Date.now},
+  deckCreated: {type: Date, default: Date.now}
 });
 
-//EXPORTS DECK MODEL
+//EXPORTS DECK MODEL TO INDEX.JS
 var Deck = mongoose.model('Deck', deckSchema);
 module.exports = Deck;

@@ -8,6 +8,6 @@ var cardSchema = new Schema({
   answer: String
 });
 
-//EXPORTS DECK MODEL
+//EXPORTS CARD MODEL TO INDEX.JS
 var Card = mongoose.model('Card', cardSchema);
 module.exports = Card;
