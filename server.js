@@ -49,6 +49,7 @@ app.delete('/api/users/:userId', controllers.users.destroy);
 //DECK MODEL API ENDPOINTS
 app.get('/api/decks', controllers.decks.index);
 app.get('/api/decks/:deckId', controllers.decks.show);
+app.post('/api/decks', controllers.decks.create);
 
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
