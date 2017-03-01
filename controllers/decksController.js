@@ -45,10 +45,19 @@ function update(req, res){
     });
   });
 }
+
+function destroy(req, res){
+  db.Deck.findOneAndRemove({_id: req.params.deckId}, function(err, deletedDeck){
+    console.log('deleted: ', deletedDeck);
+    res.json(deletedDeck);
+  });
+}
+
 //EXPORTS PUBLIC METHODS
 module.exports = {
   index: index,
   show: show,
   create: create,
-  update: update
+  update: update,
+  destroy: destroy
 }
