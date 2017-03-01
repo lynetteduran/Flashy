@@ -2,8 +2,10 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Deck = require('./deck');
 
-var UserSchema = new Schema({
+
+var userSchema = new Schema({
   userName: String,
   email: String,
   password: String,
@@ -11,5 +13,5 @@ var UserSchema = new Schema({
 });
 
 //EXPORTS USER MODEL TO INDEX.JS
-var User = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', userSchema);
 module.exports = User;
