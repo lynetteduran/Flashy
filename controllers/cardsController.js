@@ -11,6 +11,20 @@ function index(req, res){
   });
 }
 
+//POST A CARD @ ('/api/decks/:deckId/cards/')
+function create(req, res){
+  db.Deck.findById(req.params.deckId, function(err, foundDeck){
+    console.log(req.body);
+    var newCard = new db.Card(req.body);
+    foundDeck.cards.push(newCard);
+    foundDeck.save(function(err, savedDeck){
+      console.log('new card created: ', newCard);
+      res.json(newCard);
+    });
+  });
+}
+
 module.exports = {
-  index: index
+  index: index,
+  create: create
 }
