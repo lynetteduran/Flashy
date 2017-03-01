@@ -32,9 +32,23 @@ function create(req, res){
   });
 }
 
+//UPDATE A DECK @ ('/api/decks/:deckId')
+function update(req, res){
+  console.log('updating deck with data: ', req.body);
+  db.Deck.findById(req.params.deckId, function(err, foundDeck){
+    if(err){console.log("deckController.update", err);}
+    foundDeck.deckName = req.body.deckName;
+    foundDeck.subject = req.body.subject;
+    foundDeck.save(function(err, updatedDeck){
+      if(err){console.log('saving updated deck failed');}
+      res.json(updatedDeck);
+    });
+  });
+}
 //EXPORTS PUBLIC METHODS
 module.exports = {
   index: index,
   show: show,
-  create: create
+  create: create,
+  update: update
 }
