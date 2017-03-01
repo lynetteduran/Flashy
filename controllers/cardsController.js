@@ -24,7 +24,27 @@ function create(req, res){
   });
 }
 
+//UPDATE A CARD @ ('/api/decks/:deckId/cards/:cardId')
+function update(req, res){
+  db.Deck.findById(req.params.deckId, function (err, foundDeck){
+    console.log(foundDeck);
+    var cardToUpdate = foundDeck.cards.id(req.params.cardId);
+    if (cardToUpdate){
+      cardToUpdate.question = req.body.question;
+      cardToUpdate.answer = req.body.answer;
+      var updatedCard = cardToUpdate;
+      foundDeck.save(function(err, savedDeck){
+        console.log('UPDATED', updatedCard, 'IN', savedDeck.cards);
+        res.json(updatedCard);
+      });
+    } else {
+      res.send(404);
+    }
+  });
+}
+
 module.exports = {
   index: index,
-  create: create
+  create: create,
+  update: update
 }
