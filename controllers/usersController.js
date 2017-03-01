@@ -58,5 +58,5 @@ module.exports = {
   show: show,
   create: create,
   update: update,
-  destroy: destroy,
+  destroy: destroy
 };
