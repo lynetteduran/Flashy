@@ -50,6 +50,7 @@ app.delete('/api/users/:userId', controllers.users.destroy);
 app.get('/api/decks', controllers.decks.index);
 app.get('/api/decks/:deckId', controllers.decks.show);
 app.post('/api/decks', controllers.decks.create);
+app.put('/api/decks/:deckId', controllers.decks.update);
 
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
