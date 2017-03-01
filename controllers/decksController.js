@@ -2,9 +2,7 @@ var db = require('../models');
 
 //GET ALL DECKS @ ('/api/decks')
 function index(req, res){
-  db.Deck.find({})
-    .populate('user')
-    .exec(function(err, decks){
+  db.Deck.find({}, function(err, decks){
       if (err){
         console.log('Error getting all the decks');
         res.status(500).send(err);
@@ -12,7 +10,7 @@ function index(req, res){
       }
       console.log("found and populated all decks with their respective owner ", decks);
       res.json(decks);
-    });
+  });
 }
 
 //GET A DECK ('/api/decks/:deckId')
