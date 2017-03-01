@@ -57,6 +57,7 @@ app.delete('/api/decks/:deckId', controllers.decks.destroy);
 app.get('/api/decks/:deckId/cards', controllers.cards.index);
 app.post('/api/decks/:deckId/cards', controllers.cards.create);
 app.put('/api/decks/:deckId/cards/:cardId', controllers.cards.update);
+app.delete('/api/decks/:deckId/cards/:cardId', controllers.cards.destroy);
 
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
