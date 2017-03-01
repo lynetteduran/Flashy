@@ -66,89 +66,87 @@ var sampleUsers = [
 var sampleDecks = [
   {
     deckName: 'Geometry',
-    subject: 'Math'
+    subject: 'Math',
   },
   {
     deckName: 'Fractions',
-    subject: 'Math'
+    subject: 'Math',
   },
   {
     deckName: 'Impressionism',
-    subject: 'Art History'
+    subject: 'Art History',
   },
   {
     deckName: 'Nouns',
-    subject: 'English'
+    subject: 'English',
   },
   {
     deckName: 'JavaScript',
-    subject: 'Web Development'
+    subject: 'Web Development',
   },
   {
     deckName: 'Cells',
-    subject: 'Biology'
+    subject: 'Biology',
   },
   {
     deckName: 'Electrons',
-    subject: 'Chemistry'
+    subject: 'Chemistry',
   },
   {
     deckName: 'Gravity',
-    subject: 'Physics'
+    subject: 'Physics',
   },
   {
     deckName: 'Parabolas',
-    subject: 'Algebra'
+    subject: 'Algebra',
   },
   {
     deckName: 'Angles',
-    subject: 'Geometry'
+    subject: 'Geometry',
   },
   {
     deckName: 'DNA',
-    subject: 'Genetics'
+    subject: 'Genetics',
   },
   {
     deckName: 'Streches',
-    subject: 'Physical Education'
-  },
+    subject: 'Physical Education',
 ];
 
-
-// db.Deck.remove({}, function(err, decks){
-//   console.log('removed all decks');
-//   db.Deck.create(sampleDecks, function(err, decks){
-//     if (err){
-//       console.log(err);
-//       return;
-//     }
-//     console.log('recreated all decks');
-//     console.log('created', decks.length, "decks");
-//
-//     db.User.remove({}, function(err, users){
-//       console.log('removed all users');
-//       sampleUsers.forEach(function(userData){
-//         var user = new db.User({
-//           userName: userData.userName,
-//           email: userData.email,
-//           password: userData.password
-//         });
-//         console.log(userData.deck);
-//         db.Deck.findOne({deckName: userData.deck}, function(err, foundDeck){
-//           console.log('found deck "' + foundDeck.deckName + '" for user ' + user.userName);
-//           if (err){
-//             console.log(err);
-//             return;
-//           }
-//           user.deck = foundDeck;
-//           user.save(function(err, savedUser){
-//             if (err){
-//               return console.log(err);
-//             }
-//             console.log('saved ' + savedUser.userName + "'s deck by name of " + foundDeck.deckName);
-//           });
-//         });
-//       });
-//     });
-//   });
-// });
+// Remove all users from db
+db.User.remove({}, function(err, users){
+  console.log('removed all users');
+  // Create new users from sampleUsers array
+  db.User.create(sampleUsers, function(err, users){
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log('created all users: ', users.length, 'users', users);
+    // Remove all Deck docs from db
+    db.Deck.remove({}, function(err, decks){
+      if (err){
+        console.log(err);
+        return;
+      }
+      console.log('removed all decks');
+      // Create Decks from sampleDecks
+      db.Deck.create(sampleDecks, function(err, decks){
+        if (err){
+          console.log(err);
+          return;
+        }
+        console.log('created all decks without creator ref: ', decks.length, 'decks', decks);
+        for (var i = 0; i < decks.length; i++) {
+          var user = users[i];
+          var deck = decks[i];
+          deck._creator = user._id;
+          deck.save(function(err, updatedDeck){
+              if(err){console.log(err)}
+              console.log(updatedDeck);
+          });
+        }
+      });
+    });
+  });
+});
