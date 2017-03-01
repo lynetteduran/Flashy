@@ -111,7 +111,64 @@ var sampleDecks = [
   {
     deckName: 'Streches',
     subject: 'Physical Education',
+  },
 ];
+
+var sampleCards = [
+  {
+    question: "2+2",
+    answer: "4"
+  },
+  {
+    question: "Capitol of California",
+    answer: "Sacramento"
+  },
+  {
+    question: "Legal Drinking Age in California?",
+    answer: "21"
+  },
+  {
+    question: "5x5",
+    answer: "25"
+  },
+  {
+    question: "what is the index value of the first element in an array?",
+    answer: "0"
+  },
+  {
+    question: "what color is in the bottom of the spectrum of visible light?",
+    answer: "red"
+  },
+  {
+    question: "DOM is an acronym for what?",
+    answer: "Document Object Manipulation"
+  },
+  {
+    question: "What does the Spanish word 'libro' mean in English",
+    answer: "book"
+  },
+  {
+    question: "Who is the current Prime Minister of Germany?",
+    answer: "Angela Merkel"
+  },
+  {
+    question: "20 / 4",
+    answer: "5"
+  },
+  {
+    question: "1+1",
+    answer: "2"
+  },
+  {
+    question: "3+3",
+    answer: "6",
+  },
+];
+
+//add sampleSongs to sampleDecks
+sampleDecks.forEach(function(deck){
+  deck.cards = sampleCards;
+});
 
 // Remove all users from db
 db.User.remove({}, function(err, users){
