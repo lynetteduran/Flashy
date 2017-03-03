@@ -1,0 +1,12 @@
+<div>
+<h2>Sign-Up!</h2>
+<form ng-submit="usersIndexCtrl.createUser()">
+  <fieldset>
+    <input type="text" placeholder="name" ng-model="usersIndexCtrl.newUser.userName" />
+    <input type="text" placeholder="email" ng-model="usersIndexCtrl.newUser.email" />
+    <input type="text" placeholder="password" ng-model="usersIndexCtrl.newUser.password" />
+    <p><b>usersIndexCtrl.newUser:</b> {{usersIndexCtrl.newUser.userName}}</p>
+    <input type="submit" value="Save User" />
+  </fieldset>
+</form>
+</div>
