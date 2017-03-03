@@ -61,7 +61,7 @@ app.delete('/api/decks/:deckId/cards/:cardId', controllers.cards.destroy);
 
 //ALL OTHER ROUTES (ANGULAR HANDLES)
 //redirects all other paths to index
-app.get('*', function (req, res) {
+app.get('*', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
