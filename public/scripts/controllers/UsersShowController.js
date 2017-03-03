@@ -8,13 +8,12 @@ function UsersShowController($http, $routeParams){
   var vm = this;
 
   //REQUESTS TO GET A USER BY ID (USER SHOW, USER'S DECK INDEX)
-  $http.get("/api/users/" + $routeParams.id)
-    .then(function userShowSuccess(json){
-    console.log(json);
-    vm.user = json.data;
-    }, function userShowError(err){
-    console.log('There was an error getting your user dawg', err);
-    });
+    $http.get("/api/users/" + $routeParams.id)
+      .then(function userShowSuccess(json){
+      vm.user = json.data;
+      }, function userShowError(err){
+      console.log('There was an error getting your user dawg', err);
+      });
 
   //REQUESTS A USER EDIT (USER UPDATE, ABILITY TO REROUTE TO DECK SHOW)
   vm.editUser = function(user){
@@ -37,5 +36,5 @@ function UsersShowController($http, $routeParams){
       }, function userDeleteError(res){
         console.log('There was an error deleting the user dude', res);
       });
-    }
+  }
 }
