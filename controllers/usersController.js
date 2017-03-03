@@ -14,7 +14,7 @@ function index(req, res){
 //GET A USER @ ('/api/users/:userId')
 function show(req, res){
   db.User.findById(req.params.userId, function(err, foundUser){
-    if(err){console.log('albumsController.show error', err);}
+    if(err){console.log('usersController.show error', err);}
     console.log('usersController.show responding with', foundUser);
     res.json(foundUser);
   });
