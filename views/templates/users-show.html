@@ -1,0 +1,15 @@
+  <h2>Welcome, {{usersShowCtrl.user.userName}}!</h2>
+  <h4>your email currently is: </h4> <span>{{usersShowCtrl.user.email}}</span>
+  <h4>you've been a user since: </h4>
+  <span>{{usersShowCtrl.user.userSince}}</span>
+  <h4>your current decks are: </h4>
+
+  <input type="text" ng-model="searchText" placeholder="Search Your Decks">
+  <div ng-repeat="deck in usersShowCtrl.user.decks | orderBy: 'deckName' | filter: searchText">
+    <ul>
+      <li>
+        <div>{{deck.deckName}}</div>
+      </li>
+    </ul>
+  </div>
+</div>
