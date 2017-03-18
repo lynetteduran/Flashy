@@ -1,10 +1,29 @@
   <h2>Welcome, {{usersShowCtrl.user.userName}}!</h2>
-  <h4>your email currently is: </h4> <span>{{usersShowCtrl.user.email}}</span>
+  <h4>your email currently is: </h4>
+ <span ng-hide="editing">{{usersShowCtrl.user.email}}</span>
+<input ng-show="editing" ng-model="usersShowCtrl.user.email" type="text">
   <h4>you've been a user since: </h4>
   <span>{{usersShowCtrl.user.userSince}}</span>
-  <h4>your current decks are: </h4>
+
+
+  <!-- <input ng-show="editing" ng-model="user.userName" type="text">
+   -->
+  <div>
+  <button ng-click="usersShowCtrl.deleteUser(user)">Delete</button>
+</div>
+<div>
+  <button ng-hide="editing" ng-click="editing = true" >Edit</button>
+</div>
+<div>
+  <button ng-show= "editing" ng-click="editing = false">Cancel</button>
+</div>
+<div>
+  <button ng-show="editing" ng-click="usersShowCtrl.editUser(user); editing = false">Save Changes</button>
+</div>
+
 
   <input type="text" ng-model="searchText" placeholder="Search Your Decks">
+  <h4>your current decks are: </h4>
   <div ng-repeat="deck in usersShowCtrl.user.decks | orderBy: 'deckName' | filter: searchText">
     <ul>
       <li>
