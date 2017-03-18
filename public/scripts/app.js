@@ -23,11 +23,11 @@ function config($routeProvider, $locationProvider){
   //   controllerAs: 'usersIndexCtrl',
   //   controller: 'UsersIndexController'
   // })
-  // .when('/users', {
-  //   templateUrl: '/templates/users-index',
-  //   controllerAs: 'usersIndexCtrl',
-  //   controller: 'UsersIndexController'
-  // })
+  .when('/users', {
+    templateUrl: '/templates/users-index',
+    controllerAs: 'usersIndexCtrl',
+    controller: 'UsersIndexController'
+  })
   .when('/users/:id', {
     templateUrl: '/templates/users-show',
     controllerAs: 'usersShowCtrl',
