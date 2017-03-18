@@ -17,7 +17,7 @@ function UsersShowController($http, $routeParams){
 
   //REQUESTS A USER EDIT (USER UPDATE, ABILITY TO REROUTE TO DECK SHOW)
   vm.editUser = function(user){
-    $http.put("/api/users/" + user._id, user)
+    $http.put("/api/users/" + $routeParams.id, user)
       .then(function userEditSuccess(res){
         console.log('edited: ', res);
       }, function userEditError(res){
